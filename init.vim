@@ -22,8 +22,10 @@ Plug 'honza/vim-snippets'
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-
 Plug 'ervandew/supertab'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 "-----------------
