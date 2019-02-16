@@ -39,6 +39,10 @@ call plug#end()
 syntax on
 colorscheme desert
 
+"-- LINE NUMBER --
+set number
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=#515252 guibg=NONE
+
 "-- INDENTATION --
 set expandtab
 set shiftwidth=4
@@ -122,5 +126,17 @@ nmap <leader>d <Plug>(ale_fix)
 let g:ale_fixers = {
   \ 'javascript': ['eslint']
   \ }
+let g:ale_sign_error = '>'
+let g:ale_sign_warning = '*'
 
-
+"-- LIGHTLINE --
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }

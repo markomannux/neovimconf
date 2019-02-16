@@ -1,2 +1,2 @@
 "-- FONT --
-Guifont! Consolas:h11
+Guifont! Courier Prime Code:h11
