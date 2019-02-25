@@ -19,13 +19,19 @@ endif
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'markomannux/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+Plug 'vim-scripts/confirm-quit'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'mattn/emmet-vim'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 "-----------------
@@ -48,20 +54,10 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 
 "-- PASTE FROM SYSTEM CLIPBOARD --
 set clipboard+=unnamedplus
-
-"-- FILE EXPLORER --
-"let g:netrw_banner = 0
-"let g:netrw_liststyle = 3
-"let g:netrw_browse_split = 4
-"let g:netrw_altv = 1
-"let g:netrw_winsize = 25
-"augroup ProjectDrawer
-"  autocmd!
-"  autocmd VimEnter * :Vexplore
-"augroup END
 
 "--------------------
 "-- AUTOCOMPLETION --
@@ -122,6 +118,7 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 "------------------------
 
 "-- ALE plugin configuration --
+" see https://medium.com/@alexlafroscia/writing-js-in-vim-4c971a95fd49
 nmap <leader>d <Plug>(ale_fix)
 let g:ale_fixers = {
   \ 'javascript': ['eslint']
@@ -140,3 +137,35 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head'
       \ },
       \ }
+
+"-- FZF --
+" use ag as default search command for fzf
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+nmap ; :Buffers<CR>
+nmap <Leader>f :Files<CR>
+nmap <Leader>t :Tags<CR>
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+autocmd! FileType fzf
+autocmd  FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+" -- Gutentag --
+let g:gutentags_project_root = ['.cproject']
+let g:gutentags_add_default_project_roots=0
