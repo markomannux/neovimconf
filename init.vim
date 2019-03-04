@@ -1,6 +1,8 @@
 "-- SYSTEM --
 if has('win32')
-  let g:python3_host_prog = "C:/Python37/python"
+  let g:python3_host_prog = 'C:/Python37/python'
+elseif has('mac')
+  let g:python3_host_prog = '/usr/local/bin/python3'
 endif
 
 "-------------
