@@ -32,6 +32,8 @@ Plug 'vim-scripts/confirm-quit'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'nicwest/vim-http'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 
 call plug#end()
 "-----------------
@@ -169,3 +171,6 @@ autocmd  FileType fzf set laststatus=0 noshowmode noruler
 " -- Gutentag --
 let g:gutentags_project_root = ['.cproject']
 let g:gutentags_add_default_project_roots=0
+
+" -- HTTP-Vim --
+let g:vim_http_split_vertically = 1
