@@ -79,6 +79,10 @@ if !exists('g:deoplete#omni#input_patterns')
 endif
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
+highlight Pmenu ctermbg=8 guibg=#606060
+highlight PmenuSel ctermbg=1 guifg=#dddd00 guibg=#1f82cd
+highlight PmenuSbar ctermbg=0 guibg=#d6d6d6
+
 " omnifuncs
 augroup omnifuncs
   autocmd!
