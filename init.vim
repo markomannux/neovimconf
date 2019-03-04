@@ -1,5 +1,7 @@
 "-- SYSTEM --
-let g:python3_host_prog = "C:/Python37/python"
+if has('win32')
+  let g:python3_host_prog = "C:/Python37/python"
+endif
 
 "-------------
 "-- PLUGINS --
